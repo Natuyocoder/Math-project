@@ -1,0 +1,53 @@
+print("Merhaba Dünya")
+for i in range(1, 1001):
+    print(i)
+
+def draw_rectangle(length, width):
+    rectangle = ""
+    for i in range(length):
+        rectangle += "*" * width + "\n"
+    return rectangle
+
+def rectangle_perimeter_area(length, width):
+    perimeter = 2 * (length + width)
+    area = length * width
+    return perimeter, area
+
+length = 15
+width = 15
+
+perimeter, area = rectangle_perimeter_area(length, width)
+print("Shape of the rectangle:")
+print(draw_rectangle(length, width))
+print("Perimeter of the rectangle:", perimeter)
+print("Area of the rectangle:", area)
+def is_prime(number):
+    if number <= 1:
+        return False
+    elif number <= 3:
+        return True
+    elif number % 2 == 0 or number % 3 == 0:
+        return False
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def find_primes(limit):
+    primes = []
+    for num in range(2, limit + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
+
+try:
+    limit = int(input("Enter an upper limit: "))
+    if limit < 2:
+        print("Upper limit must be at least 2.")
+    else:
+        prime_numbers = find_primes(limit)
+        print("Prime numbers:", prime_numbers)
+except ValueError:
+    print("Invalid input. Please enter an integer.")
